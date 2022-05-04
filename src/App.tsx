@@ -22,7 +22,7 @@ const Image = styled.div`
   background-size: 100% 100%;
 `;
 
-function App() {
+const App = () => {
   const [position, setPosition] = useState({
     x: 0,
     y: 0,
@@ -30,7 +30,7 @@ function App() {
     height: 390,
   });
 
-  function onResize(
+  const onResize = (
     event: MouseEvent,
     direction: string,
     ref: any,
@@ -38,7 +38,7 @@ function App() {
       width: number;
       height: number;
     }
-  ) {
+  ) => {
     const { width, height } = ref.style;
 
     setPosition((prevPosition) => ({
@@ -46,16 +46,16 @@ function App() {
       width,
       height,
     }));
-  }
+  };
 
-  function onDragStop(e: MouseEvent, d: any) {
+  const onDragStop = (e: MouseEvent, d: any) => {
     const { x, y } = d;
     setPosition((prevPosition) => ({
       ...prevPosition,
       x,
       y,
     }));
-  }
+  };
 
   // const cardRef = useRef();
   // const onDownloadBtn = () => {
@@ -84,12 +84,12 @@ function App() {
         bounds="parent"
         lockAspectRatio={true}
       >
-        <Image ref={cardRef} onClick={() => console.log("Clicked")}>
+        <Image ref={cardRef}>
           <button onClick={onDownloadBtn}>다운로드 버튼</button>
         </Image>
       </StyledRnd>
     </Container>
   );
-}
+};
 
 export default App;
