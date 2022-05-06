@@ -58,8 +58,6 @@ const App = () => {
     }
   ) => {
     const { width, height } = ref.style;
-    console.log(width);
-
     setPosition((prevPosition) => ({
       ...prevPosition,
       width,
