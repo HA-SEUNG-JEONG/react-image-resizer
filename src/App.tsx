@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import ReactDOM from "react-dom";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import { Rnd } from "react-rnd";
 import domtoimage from "dom-to-image";
@@ -81,7 +80,6 @@ const App = () => {
   const onDownloadBtn = () => {
     if (cardRef.current) {
       const card = cardRef.current;
-
       domtoimage.toBlob(card).then((blob) => {
         saveAs(blob, "card.png");
       });
