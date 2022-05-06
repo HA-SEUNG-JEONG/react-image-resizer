@@ -40,6 +40,7 @@ const App = () => {
     }
   ) => {
     const { width, height } = ref.style;
+    console.log(width);
 
     setPosition((prevPosition) => ({
       ...prevPosition,
@@ -48,7 +49,7 @@ const App = () => {
     }));
   };
 
-  const onDragStop = (e: MouseEvent, d: any) => {
+  const onDragStop = (d: any) => {
     const { x, y } = d;
     setPosition((prevPosition) => ({
       ...prevPosition,
@@ -57,18 +58,11 @@ const App = () => {
     }));
   };
 
-  // const cardRef = useRef();
-  // const onDownloadBtn = () => {
-  //   const card = cardRef.current as any;
-  //   domtoimage.toBlob(card).then((blob) => {
-  //     saveAs(blob, "card.png");
-  //   });
-  // };
-
   const cardRef = useRef<HTMLDivElement | null>(null);
   const onDownloadBtn = () => {
     if (cardRef.current) {
       const card = cardRef.current;
+
       domtoimage.toBlob(card).then((blob) => {
         saveAs(blob, "card.png");
       });
@@ -84,9 +78,13 @@ const App = () => {
         bounds="parent"
         lockAspectRatio={true}
       >
-        <Image ref={cardRef}>
-          <button onClick={onDownloadBtn}>다운로드 버튼</button>
-        </Image>
+        <Image ref={cardRef}></Image>
+        <button onClick={onDownloadBtn}>다운로드 버튼</button>
+        <p>
+          Width: {cardRef.current?.clientWidth || 0}px, Height:
+          {cardRef.current?.clientHeight || 0}
+          px
+        </p>
       </StyledRnd>
     </Container>
   );
