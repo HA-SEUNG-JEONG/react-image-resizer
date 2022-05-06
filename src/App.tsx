@@ -18,15 +18,34 @@ const Container = styled.div`
 const Image = styled.div`
   width: 100%;
   height: 100%;
-  background-image: url(https://pbs.twimg.com/media/FR1pqaWXwAQcp7K?format=jpg&name=large);
+  background-image: url(https://avatars.githubusercontent.com/u/88266129?v=4);
   background-size: 100% 100%;
+`;
+
+const Button = styled.button`
+  display: flex;
+  margin: 0.5rem auto;
+  border: none;
+  background-color: skyblue;
+  padding: 0.5rem 0.5rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
+const Info = styled.p`
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
 `;
 
 const App = () => {
   const [position, setPosition] = useState({
     x: 0,
     y: 0,
-    width: 320,
+    width: 390,
     height: 390,
   });
 
@@ -79,12 +98,12 @@ const App = () => {
         lockAspectRatio={true}
       >
         <Image ref={cardRef}></Image>
-        <button onClick={onDownloadBtn}>다운로드 버튼</button>
-        <p>
+        <Button onClick={onDownloadBtn}>다운로드 버튼</Button>
+        <Info>
           Width: {cardRef.current?.clientWidth || 0}px, Height:
           {cardRef.current?.clientHeight || 0}
           px
-        </p>
+        </Info>
       </StyledRnd>
     </Container>
   );
